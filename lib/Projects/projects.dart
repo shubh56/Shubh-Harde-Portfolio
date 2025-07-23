@@ -18,6 +18,7 @@ class _ProjectsState extends State<Projects>
   bool _isTSPSolverHovered = false;
   bool _isActivityRecognitionHovered = false;
   bool _isFaceVerificationHovered = false;
+  bool _isFootballNewsHovered = false;
 
   @override
   void initState() {
@@ -42,7 +43,9 @@ class _ProjectsState extends State<Projects>
 
   void _onHover(bool isHovered, String project) {
     setState(() {
-      if (project == 'player_replacement') {
+      if (project == 'football_news') {
+        _isFootballNewsHovered = isHovered;
+      } else if (project == 'player_replacement') {
         _isPlayerReplacementHovered = isHovered;
       } else if (project == 'labor_link') {
         _isLaborLinkHovered = isHovered;
@@ -317,6 +320,24 @@ class _ProjectsState extends State<Projects>
                   runSpacing: 32,
                   alignment: WrapAlignment.center,
                   children: [
+                    _buildProjectCard(
+                      title: 'Football Club News Scraper',
+                      subtitle: 'Latest news about your football club',
+                      description:
+                          'A web scraper that aggregates the latest news articles and updates about your favorite football club from various sources. Stay up-to-date with real-time news, match reports, transfer rumors, and more, all in one place.',
+                      icon: Icons.newspaper_rounded,
+                      techTags: [
+                        'Python',
+                        'Web Scraping',
+                        'BeautifulSoup',
+                        'News Aggregation',
+                        'Automation'
+                      ],
+                      projectUrl:
+                          'https://github.com/shubh56/Football-Club-News-Scraper',
+                      isHovered: _isFootballNewsHovered,
+                      projectId: 'football_news',
+                    ),
                     _buildProjectCard(
                       title: 'Player Replacement Finder',
                       subtitle: 'Football Analytics Project',
